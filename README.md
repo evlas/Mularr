@@ -4,7 +4,7 @@
 [![GitHub Release](https://img.shields.io/github/v/release/evlas/Mularr?color=blue&style=flat-square)](https://github.com/evlas/Mularr/releases)
 [![Hassfest](https://github.com/evlas/Mularr/actions/workflows/hassfest.yml/badge.svg)](https://github.com/evlas/Mularr/actions/workflows/hassfest.yml)
 [![HACS Action](https://github.com/evlas/Mularr/actions/workflows/hacs.yml/badge.svg)](https://github.com/evlas/Mularr/actions/workflows/hacs.yml)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: GPL-3.0](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 Integrazione personalizzata per **Home Assistant** per monitorare, gestire e automatizzare la tua istanza di **Mularr** (aMule Web & Automation).
 
@@ -164,4 +164,4 @@ action:
 
 ## 📄 Licenza
 
-Distribuito sotto licenza MIT. Consulta il file [LICENSE](LICENSE) per maggiori informazioni.
+Distribuito sotto licenza GNU General Public License v3.0 (GPLv3). Consulta il file [LICENSE](LICENSE) per maggiori informazioni.
