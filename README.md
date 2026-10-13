@@ -1,9 +1,9 @@
 # Mularr - Home Assistant Integration 🐴
 
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-41BDF5.svg)](https://github.com/hacs/default)
-[![GitHub Release](https://img.shields.io/github/v/release/vito/homeassistant-mularr?color=blue&style=flat-square)](https://github.com/vito/homeassistant-mularr/releases)
-[![Hassfest](https://github.com/vito/homeassistant-mularr/actions/workflows/hassfest.yml/badge.svg)](https://github.com/vito/homeassistant-mularr/actions/workflows/hassfest.yml)
-[![HACS Action](https://github.com/vito/homeassistant-mularr/actions/workflows/hacs.yml/badge.svg)](https://github.com/vito/homeassistant-mularr/actions/workflows/hacs.yml)
+[![GitHub Release](https://img.shields.io/github/v/release/evlas/Mularr?color=blue&style=flat-square)](https://github.com/evlas/Mularr/releases)
+[![Hassfest](https://github.com/evlas/Mularr/actions/workflows/hassfest.yml/badge.svg)](https://github.com/evlas/Mularr/actions/workflows/hassfest.yml)
+[![HACS Action](https://github.com/evlas/Mularr/actions/workflows/hacs.yml/badge.svg)](https://github.com/evlas/Mularr/actions/workflows/hacs.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Integrazione personalizzata per **Home Assistant** per monitorare, gestire e automatizzare la tua istanza di **Mularr** (aMule Web & Automation).

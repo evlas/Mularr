@@ -54,7 +54,7 @@ Integrazione personalizzata per **Home Assistant** per monitorare e controllare 
 2. Clicca su **Aggiungi integrazione** in basso a destra.
 3. Cerca **Mularr**.
 4. Inserisci i dati della tua istanza:
-   * **Host**: `192.168.60.2`
+   * **Host**: `192.168.0.2`
    * **Porta**: `8940` (default)
    * **API Key**: la tua chiave API (se abilitata)
    * **Usa SSL**: disattivato (a meno che tu non abbia un reverse proxy HTTPS)
@@ -69,13 +69,13 @@ type: entities
 title: Mularr
 show_header_toggle: false
 entities:
-  - entity: switch.mularr_192_168_60_2_ed2k_server_connection
-  - entity: sensor.mularr_192_168_60_2_download_speed
-  - entity: sensor.mularr_192_168_60_2_upload_speed
-  - entity: sensor.mularr_192_168_60_2_active_downloads
-  - entity: sensor.mularr_192_168_60_2_id_status
-  - entity: sensor.mularr_192_168_60_2_connected_server
-  - entity: sensor.mularr_192_168_60_2_free_disk_space
-  - entity: button.mularr_192_168_60_2_restart_daemon
-  - entity: button.mularr_192_168_60_2_clear_completed
+  - entity: switch.mularr_192_168_0_2_ed2k_server_connection
+  - entity: sensor.mularr_192_168_0_2_download_speed
+  - entity: sensor.mularr_192_168_0_2_upload_speed
+  - entity: sensor.mularr_192_168_0_2_active_downloads
+  - entity: sensor.mularr_192_168_0_2_id_status
+  - entity: sensor.mularr_192_168_0_2_connected_server
+  - entity: sensor.mularr_192_168_0_2_free_disk_space
+  - entity: button.mularr_192_168_0_2_restart_daemon
+  - entity: button.mularr_192_168_0_2_clear_completed
 ```

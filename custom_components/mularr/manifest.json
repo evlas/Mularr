@@ -1,11 +1,11 @@
 {
   "domain": "mularr",
   "name": "Mularr",
-  "codeowners": ["@joecarl", "@vito"],
+  "codeowners": ["@evlas", "@joecarl"],
   "config_flow": true,
-  "documentation": "https://github.com/joecarl/mularr",
+  "documentation": "https://github.com/evlas/Mularr",
   "integration_type": "hub",
   "iot_class": "local_polling",
-  "issue_tracker": "https://github.com/joecarl/mularr/issues",
+  "issue_tracker": "https://github.com/evlas/Mularr/issues",
   "version": "1.0.0"
 }
