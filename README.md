@@ -69,7 +69,7 @@ Tutte le entità vengono associate automaticamente a un unico dispositivo **Mula
 2. Apri **HACS** dal menu laterale e clicca su **Integrazioni**.
 3. Clicca sui **tre puntini in alto a destra** e seleziona **Repository personalizzati**.
 4. Inserisci l'URL del tuo repository GitHub:
-   * **Repository**: `https://github.com/<TUO_UTENTE>/homeassistant-mularr`
+   * **Repository**: `https://github.com/evlas/Mularr`
    * **Tipo**: `Integrazione`
 5. Clicca su **Aggiungi**.
 6. Cerca **Mularr**, clicca su **Scarica** e seleziona l'ultima versione.
@@ -93,7 +93,7 @@ Tutte le entità vengono associate automaticamente a un unico dispositivo **Mula
 2. Clicca su **Aggiungi integrazione** (in basso a destra).
 3. Cerca **Mularr**.
 4. Compila il modulo con i dati della tua istanza:
-   * **Host o Indirizzo IP**: es. `192.168.60.2`
+   * **Host o Indirizzo IP**: es. `192.168.0.2`
    * **Porta**: `8940` (default)
    * **API Key**: la tua chiave segreta (se configurata nelle variabili d'ambiente di Mularr)
    * **Usa SSL**: seleziona se Mularr risponde su HTTPS
@@ -113,19 +113,19 @@ type: entities
 title: 🐴 Mularr
 show_header_toggle: false
 entities:
-  - entity: switch.mularr_192_168_60_2_ed2k_server_connection
-  - entity: binary_sensor.mularr_192_168_60_2_ed2k_connected
-  - entity: binary_sensor.mularr_192_168_60_2_kad_connected
-  - entity: sensor.mularr_192_168_60_2_id_status
-  - entity: sensor.mularr_192_168_60_2_connected_server
+  - entity: switch.mularr_192_168_0_2_ed2k_server_connection
+  - entity: binary_sensor.mularr_192_168_0_2_ed2k_connected
+  - entity: binary_sensor.mularr_192_168_0_2_kad_connected
+  - entity: sensor.mularr_192_168_0_2_id_status
+  - entity: sensor.mularr_192_168_0_2_connected_server
   - type: divider
-  - entity: sensor.mularr_192_168_60_2_download_speed
-  - entity: sensor.mularr_192_168_60_2_upload_speed
-  - entity: sensor.mularr_192_168_60_2_active_downloads
-  - entity: sensor.mularr_192_168_60_2_free_disk_space
+  - entity: sensor.mularr_192_168_0_2_download_speed
+  - entity: sensor.mularr_192_168_0_2_upload_speed
+  - entity: sensor.mularr_192_168_0_2_active_downloads
+  - entity: sensor.mularr_192_168_0_2_free_disk_space
   - type: divider
-  - entity: button.mularr_192_168_60_2_restart_daemon
-  - entity: button.mularr_192_168_60_2_clear_completed
+  - entity: button.mularr_192_168_0_2_restart_daemon
+  - entity: button.mularr_192_168_0_2_clear_completed
 ```
 
 ---
@@ -137,7 +137,7 @@ entities:
 alias: "Allarme Mularr LowID"
 trigger:
   - platform: state
-    entity_id: sensor.mularr_192_168_60_2_id_status
+    entity_id: sensor.mularr_192_168_0_2_id_status
     to: "LowID"
     for:
       minutes: 2
@@ -157,11 +157,11 @@ trigger:
 action:
   - service: button.press
     target:
-      entity_id: button.mularr_192_168_60_2_clear_completed
+      entity_id: button.mularr_192_168_0_2_clear_completed
 ```
 
 ---
 
 ## 📄 Licenza
 
-Distribuito sotto licenza MIT. Consulta il file [LICENSE](file:///home/vito/Documenti/GitLocale/mularr/LICENSE) per maggiori informazioni.
+Distribuito sotto licenza MIT. Consulta il file [LICENSE](LICENSE) per maggiori informazioni.
