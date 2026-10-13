@@ -1,0 +1,65 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Connetti a Mularr",
+        "description": "Inserisci i parametri di connessione alla tua istanza Mularr.",
+        "data": {
+          "host": "Host o Indirizzo IP",
+          "port": "Porta",
+          "api_key": "API Key",
+          "ssl": "Usa SSL"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Impossibile connettersi a Mularr. Verifica indirizzo, porta e rete.",
+      "invalid_auth": "API Key errata o accesso non autorizzato.",
+      "unknown": "Si è verificato un errore imprevisto."
+    },
+    "abort": {
+      "already_configured": "Questa istanza Mularr è già configurata."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Opzioni Mularr",
+        "description": "Modifica l'intervallo di aggiornamento dei dati.",
+        "data": {
+          "scan_interval": "Intervallo di polling (secondi)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "download_speed": { "name": "Velocità Download" },
+      "upload_speed": { "name": "Velocità Upload" },
+      "id_status": { "name": "Stato ID" },
+      "connected_server": { "name": "Server Connesso" },
+      "active_downloads": { "name": "Download Attivi" },
+      "shared_files": { "name": "File Condivisi" },
+      "total_sources": { "name": "Fonti Totali" },
+      "upload_queue": { "name": "Coda di Upload" },
+      "total_downloaded": { "name": "Totale Scaricato" },
+      "total_uploaded": { "name": "Totale Inviato" },
+      "free_disk_space": { "name": "Spazio Disco Libero" },
+      "public_ip": { "name": "IP Pubblico" }
+    },
+    "binary_sensor": {
+      "ed2k_connected": { "name": "ED2K Connesso" },
+      "kad_connected": { "name": "KAD Connesso" },
+      "kad_firewalled": { "name": "KAD Firewalled" },
+      "vpn_status": { "name": "VPN Attiva" }
+    },
+    "button": {
+      "restart_daemon": { "name": "Riavvia Demone" },
+      "clear_completed": { "name": "Pulisci Trasferimenti Completati" },
+      "connect_server": { "name": "Connetti a Server" }
+    },
+    "switch": {
+      "server_connection": { "name": "Connessione Server ED2K" }
+    }
+  }
+}

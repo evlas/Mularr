@@ -1,0 +1,65 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Connect to Mularr",
+        "description": "Enter connection details for your Mularr instance.",
+        "data": {
+          "host": "Host or IP",
+          "port": "Port",
+          "api_key": "API Key",
+          "ssl": "Use SSL"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Failed to connect to Mularr. Please check host, port and network.",
+      "invalid_auth": "Invalid API Key or unauthorized access.",
+      "unknown": "Unexpected error occurred."
+    },
+    "abort": {
+      "already_configured": "This Mularr instance is already configured."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Mularr Options",
+        "description": "Adjust polling settings for Mularr.",
+        "data": {
+          "scan_interval": "Update Interval (seconds)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "download_speed": { "name": "Download Speed" },
+      "upload_speed": { "name": "Upload Speed" },
+      "id_status": { "name": "ID Status" },
+      "connected_server": { "name": "Connected Server" },
+      "active_downloads": { "name": "Active Downloads" },
+      "shared_files": { "name": "Shared Files" },
+      "total_sources": { "name": "Total Sources" },
+      "upload_queue": { "name": "Upload Queue" },
+      "total_downloaded": { "name": "Total Downloaded" },
+      "total_uploaded": { "name": "Total Uploaded" },
+      "free_disk_space": { "name": "Free Disk Space" },
+      "public_ip": { "name": "Public IP" }
+    },
+    "binary_sensor": {
+      "ed2k_connected": { "name": "ED2K Connected" },
+      "kad_connected": { "name": "KAD Connected" },
+      "kad_firewalled": { "name": "KAD Firewalled" },
+      "vpn_status": { "name": "VPN Active" }
+    },
+    "button": {
+      "restart_daemon": { "name": "Restart Daemon" },
+      "clear_completed": { "name": "Clear Completed" },
+      "connect_server": { "name": "Connect Server" }
+    },
+    "switch": {
+      "server_connection": { "name": "ED2K Server Connection" }
+    }
+  }
+}

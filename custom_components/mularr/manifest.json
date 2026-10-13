@@ -1,0 +1,11 @@
+{
+  "domain": "mularr",
+  "name": "Mularr",
+  "codeowners": ["@joecarl", "@vito"],
+  "config_flow": true,
+  "documentation": "https://github.com/joecarl/mularr",
+  "integration_type": "hub",
+  "iot_class": "local_polling",
+  "issue_tracker": "https://github.com/joecarl/mularr/issues",
+  "version": "1.0.0"
+}
