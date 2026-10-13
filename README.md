@@ -10,6 +10,21 @@ Integrazione personalizzata per **Home Assistant** per monitorare, gestire e aut
 
 ---
 
+## 🐴 Cos'è Mularr?
+
+Questa integrazione richiede un'istanza attiva di **[Mularr](https://github.com/joecarl/mularr)**, un progetto open-source sviluppato da **[joecarl](https://github.com/joecarl)**.
+
+**Mularr** è una potente soluzione basata su container Docker per **aMule** che unisce il classico P2P agli strumenti moderni di automazione multimediale:
+* 🌐 **Interfaccia Web Retro-Style**: Dashboard reattiva con look nostalgico (stile Windows XP di default, Windows 11, Modern e Hacker).
+* 🔄 **Integrazione con lo stack \*Arr**: Offre compatibilità con API qBittorrent e indicizzatori Torznab per integrare facilmente aMule con Sonarr, Radarr, ecc.
+* 🛡️ **Supporto VPN & Gluetun**: Integrazione nativa per il monitoraggio della salute VPN e l'aggiornamento automatico delle porte.
+* ✈️ **Integrazione Telegram**: Notifiche bot per i download completati e supporto al download tramite rete Telegram.
+* 📦 **Demone aMule incluso**: Include aMule v3.0+ preconfigurato, senza dover gestire container separati.
+
+> 📖 Per istruzioni su come installare ed eseguire il container Mularr tramite Docker Compose, consulta il repository ufficiale: **[https://github.com/joecarl/mularr](https://github.com/joecarl/mularr)**.
+
+---
+
 ## 🌟 Caratteristiche Principali
 
 * ⚙️ **Configurazione guidata da interfaccia grafica (UI)** tramite Config Flow.

@@ -1,6 +1,6 @@
 # Mularr - Home Assistant Integration 🐴
 
-Integrazione personalizzata per **Home Assistant** per monitorare e controllare **Mularr** (aMule Web & Automation).
+Integrazione personalizzata per **Home Assistant** per monitorare e controllare **[Mularr](https://github.com/joecarl/mularr)** (aMule Web & Automation).
 
 ---
 
