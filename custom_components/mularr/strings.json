@@ -37,6 +37,7 @@
       "download_speed": { "name": "Download Speed" },
       "upload_speed": { "name": "Upload Speed" },
       "id_status": { "name": "ID Status" },
+      "kad_status": { "name": "KAD Status" },
       "connected_server": { "name": "Connected Server" },
       "active_downloads": { "name": "Active Downloads" },
       "shared_files": { "name": "Shared Files" },
@@ -50,7 +51,6 @@
     "binary_sensor": {
       "ed2k_connected": { "name": "ED2K Connected" },
       "kad_connected": { "name": "KAD Connected" },
-      "kad_firewalled": { "name": "KAD Firewalled" },
       "vpn_status": { "name": "VPN Active" }
     },
     "button": {

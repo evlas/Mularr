@@ -1,68 +1,70 @@
 # Mularr - Home Assistant Integration 🐴
 
-Integrazione personalizzata per **Home Assistant** per monitorare e controllare **[Mularr](https://github.com/joecarl/mularr)** (aMule Web & Automation).
+🌍 **Language / Lingua**: **English** • [Italiano](README.it.md)
+
+Custom integration for **Home Assistant** to monitor and control **[Mularr](https://github.com/joecarl/mularr)** (aMule Web & Automation).
 
 ---
 
-## 🚀 Caratteristiche
+## 🚀 Features
 
-* ⚙️ **Configurazione completa da interfaccia grafica (UI)** con Config Flow.
-* 🔒 **Supporto API Key** e controllo automatico della connessione.
-* 📊 **Sensori di telemetria**:
-  * Velocità Download e Upload (in B/s, kB/s con device class dedicata).
-  * Stato ID (HighID / LowID).
-  * Server connesso e dettagli di rete.
-  * Conteggio download attivi.
-  * File condivisi, fonti totali e coda di upload.
-  * Totale scaricato e inviato (statistiche a lungo termine supportate).
-  * Spazio disco residuo su storage.
-  * Indirizzo IP pubblico e geolocalizzazione rilevata.
-* 🔌 **Sensori Binari**:
-  * Connessione ED2K attiva.
-  * Rete KAD attiva.
-  * KAD con firewall (rilevamento problemi).
-  * Stato VPN Gluetun.
-* 🔘 **Pulsanti di controllo**:
-  * Riavvio demone aMule.
-  * Pulizia trasferimenti completati.
-  * Connessione server.
+* ⚙️ **Full GUI-based setup** via Config Flow.
+* 🔒 **API Key support** and automatic connection testing.
+* 📊 **Telemetry sensors**:
+  * Download and Upload speed (in B/s, kB/s with dedicated device class).
+  * ID Status (HighID / LowID).
+  * KAD Status (Firewalled / Direct).
+  * Connected server and network details.
+  * Active downloads count.
+  * Shared files, total sources, and upload queue.
+  * Total downloaded and uploaded (long-term statistics supported).
+  * Available free disk space.
+  * Public IP address and detected geolocation.
+* 🔌 **Binary Sensors**:
+  * Active ED2K connection.
+  * Active KAD network.
+  * Gluetun VPN status.
+* 🔘 **Control Buttons**:
+  * Restart aMule daemon.
+  * Clear completed transfers.
+  * Connect to server.
 * 🎚️ **Switch**:
-  * Interruttore per connettere o disconnettere la sessione dal server ED2K.
+  * Switch to connect or disconnect the ED2K server session.
 
 ---
 
-## 📦 Installazione
+## 📦 Installation
 
-### Metodo 1: Installazione Manuale
-1. Copia l'intera cartella `custom_components/mularr` all'interno della cartella `custom_components` della tua installazione di Home Assistant:
+### Method 1: Manual Installation
+1. Copy the `custom_components/mularr` folder into the `custom_components` directory of your Home Assistant installation:
    ```text
    /config/custom_components/mularr/
    ```
-2. Riavvia Home Assistant.
+2. Restart Home Assistant.
 
-### Metodo 2: Installazione via HACS
-1. Apri **HACS** in Home Assistant.
-2. Vai su **Integrazioni** e clicca sui tre puntini in alto a destra -> **Repository personalizzati**.
-3. Incolla l'URL del tuo repository GitHub e seleziona la categoria **Integrazione**.
-4. Clicca su **Scarica** e riavvia Home Assistant.
+### Method 2: Installation via HACS
+1. Open **HACS** in Home Assistant.
+2. Go to **Integrations** and click the three dots in the top right -> **Custom repositories**.
+3. Paste the URL of your GitHub repository and select the **Integration** category.
+4. Click **Download** and restart Home Assistant.
 
 ---
 
-## 🛠️ Configurazione
+## 🛠️ Configuration
 
-1. In Home Assistant vai su **Impostazioni** -> **Dispositivi e servizi**.
-2. Clicca su **Aggiungi integrazione** in basso a destra.
-3. Cerca **Mularr**.
-4. Inserisci i dati della tua istanza:
+1. In Home Assistant, go to **Settings** -> **Devices & services**.
+2. Click **Add Integration** in the bottom right corner.
+3. Search for **Mularr**.
+4. Fill in the connection form:
    * **Host**: `192.168.0.2`
-   * **Porta**: `8940` (default)
-   * **API Key**: la tua chiave API (se abilitata)
-   * **Usa SSL**: disattivato (a meno che tu non abbia un reverse proxy HTTPS)
-5. Clicca su **Invia**. L'integrazione verificherà le credenziali e creerà il dispositivo con tutte le entità.
+   * **Port**: `8940` (default)
+   * **API Key**: your API key (if enabled)
+   * **Use SSL**: disabled (unless running behind an HTTPS reverse proxy)
+5. Click **Submit**. The integration will verify credentials and set up the device with all entities.
 
 ---
 
-## 🎨 Esempio Card Lovelace
+## 🎨 Example Lovelace Card
 
 ```yaml
 type: entities
@@ -74,6 +76,7 @@ entities:
   - entity: sensor.mularr_192_168_0_2_upload_speed
   - entity: sensor.mularr_192_168_0_2_active_downloads
   - entity: sensor.mularr_192_168_0_2_id_status
+  - entity: sensor.mularr_192_168_0_2_kad_status
   - entity: sensor.mularr_192_168_0_2_connected_server
   - entity: sensor.mularr_192_168_0_2_free_disk_space
   - entity: button.mularr_192_168_0_2_restart_daemon

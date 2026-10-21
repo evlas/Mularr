@@ -59,6 +59,17 @@ SENSOR_TYPES: tuple[MularrSensorEntityDescription, ...] = (
         value_fn=lambda data: "HighID" if data.get("status", {}).get("isHighID") else "LowID",
     ),
     MularrSensorEntityDescription(
+        key="kad_status",
+        translation_key="kad_status",
+        name="KAD Status",
+        icon="mdi:network",
+        value_fn=lambda data: (
+            "Firewalled"
+            if data.get("status", {}).get("connectionState", {}).get("kadFirewalled")
+            else "Direct"
+        ),
+    ),
+    MularrSensorEntityDescription(
         key="connected_server",
         translation_key="connected_server",
         name="Connected Server",

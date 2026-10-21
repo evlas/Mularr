@@ -1,0 +1,65 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Conectar a Mularr",
+        "description": "Introduce los datos de conexión para tu instancia de Mularr.",
+        "data": {
+          "host": "Host o Dirección IP",
+          "port": "Puerto",
+          "api_key": "Clave API (API Key)",
+          "ssl": "Usar SSL"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "No se pudo conectar a Mularr. Por favor, verifica el host, el puerto y la red.",
+      "invalid_auth": "Clave API no válida o acceso no autorizado.",
+      "unknown": "Ocurrió un error inesperado."
+    },
+    "abort": {
+      "already_configured": "Esta instancia de Mularr ya está configurada."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Opciones de Mularr",
+        "description": "Ajusta la configuración de actualización para Mularr.",
+        "data": {
+          "scan_interval": "Intervalo de actualización (segundos)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "download_speed": { "name": "Velocidad de Descarga" },
+      "upload_speed": { "name": "Velocidad de Subida" },
+      "id_status": { "name": "Estado ID" },
+      "kad_status": { "name": "Estado KAD" },
+      "connected_server": { "name": "Servidor Conectado" },
+      "active_downloads": { "name": "Descargas Activas" },
+      "shared_files": { "name": "Archivos Compartidos" },
+      "total_sources": { "name": "Fuentes Totales" },
+      "upload_queue": { "name": "Cola de Subida" },
+      "total_downloaded": { "name": "Total Descargado" },
+      "total_uploaded": { "name": "Total Subido" },
+      "free_disk_space": { "name": "Espacio Libre en Disco" },
+      "public_ip": { "name": "IP Pública" }
+    },
+    "binary_sensor": {
+      "ed2k_connected": { "name": "ED2K Conectado" },
+      "kad_connected": { "name": "KAD Conectado" },
+      "vpn_status": { "name": "VPN Activa" }
+    },
+    "button": {
+      "restart_daemon": { "name": "Reiniciar Demonio" },
+      "clear_completed": { "name": "Limpiar Descargas Completadas" },
+      "connect_server": { "name": "Conectar a Servidor" }
+    },
+    "switch": {
+      "server_connection": { "name": "Conexión a Servidor ED2K" }
+    }
+  }
+}

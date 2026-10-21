@@ -47,15 +47,6 @@ BINARY_SENSOR_TYPES: tuple[MularrBinarySensorEntityDescription, ...] = (
         ),
     ),
     MularrBinarySensorEntityDescription(
-        key="kad_firewalled",
-        translation_key="kad_firewalled",
-        name="KAD Firewalled",
-        device_class=BinarySensorDeviceClass.PROBLEM,
-        is_on_fn=lambda data: bool(
-            data.get("status", {}).get("connectionState", {}).get("kadFirewalled")
-        ),
-    ),
-    MularrBinarySensorEntityDescription(
         key="vpn_status",
         translation_key="vpn_status",
         name="VPN Active",

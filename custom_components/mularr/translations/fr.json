@@ -1,0 +1,65 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Se connecter à Mularr",
+        "description": "Entrez les paramètres de connexion pour votre instance Mularr.",
+        "data": {
+          "host": "Hôte ou Adresse IP",
+          "port": "Port",
+          "api_key": "Clé API",
+          "ssl": "Utiliser SSL"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Échec de connexion à Mularr. Veuillez vérifier l'hôte, le port et le réseau.",
+      "invalid_auth": "Clé API invalide ou accès non autorisé.",
+      "unknown": "Une erreur inattendue est survenue."
+    },
+    "abort": {
+      "already_configured": "Cette instance Mularr est déjà configurée."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Options de Mularr",
+        "description": "Ajuster l'intervalle d'actualisation des données pour Mularr.",
+        "data": {
+          "scan_interval": "Intervalle d'actualisation (secondes)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "download_speed": { "name": "Vitesse de Téléchargement" },
+      "upload_speed": { "name": "Vitesse d'Envoi" },
+      "id_status": { "name": "Statut ID" },
+      "kad_status": { "name": "Statut KAD" },
+      "connected_server": { "name": "Serveur Connecté" },
+      "active_downloads": { "name": "Téléchargements Actifs" },
+      "shared_files": { "name": "Fichiers Partagés" },
+      "total_sources": { "name": "Sources Totales" },
+      "upload_queue": { "name": "File d'Attente d'Envoi" },
+      "total_downloaded": { "name": "Total Téléchargé" },
+      "total_uploaded": { "name": "Total Envoyé" },
+      "free_disk_space": { "name": "Espace Disque Libre" },
+      "public_ip": { "name": "IP Publique" }
+    },
+    "binary_sensor": {
+      "ed2k_connected": { "name": "ED2K Connecté" },
+      "kad_connected": { "name": "KAD Connecté" },
+      "vpn_status": { "name": "VPN Actif" }
+    },
+    "button": {
+      "restart_daemon": { "name": "Redémarrer le Démon" },
+      "clear_completed": { "name": "Nettoyer les Téléchargements Terminés" },
+      "connect_server": { "name": "Se Connecter au Serveur" }
+    },
+    "switch": {
+      "server_connection": { "name": "Connexion au Serveur ED2K" }
+    }
+  }
+}
