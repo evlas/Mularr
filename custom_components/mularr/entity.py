@@ -34,5 +34,5 @@ class MularrEntity(CoordinatorEntity[MularrDataUpdateCoordinator]):
             manufacturer="Mularr",
             model="aMule & P2P Web Automation",
             configuration_url=self.coordinator.client.base_url,
-            sw_version="1.0.0",
+            sw_version=self.coordinator.version or "0.0.2",
         )

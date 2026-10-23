@@ -15,10 +15,71 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Validate Python and JSON Files
+        run: |
+          python3 -m py_compile custom_components/mularr/*.py
+          python3 -c "import json, glob; [json.load(open(f)) for f in ['hacs.json', 'custom_components/mularr/manifest.json', 'custom_components/mularr/strings.json'] + glob.glob('custom_components/mularr/translations/*.json')]"
+
+      - name: Generate Changelog from Commits
+        run: |
+          git fetch --tags --force 2>/dev/null || true
+          TAG_NAME="${{ github.ref_name }}"
+          if [ -z "$TAG_NAME" ]; then
+            TAG_NAME="${GITHUB_REF#refs/tags/}"
+          fi
+
+          echo "Generazione Changelog per: $TAG_NAME"
+          PREV_TAG=$(git describe --tags --abbrev=0 "${TAG_NAME}^" 2>/dev/null || true)
+          TAG_MSG=$(git tag -l --format='%(contents)' "$TAG_NAME" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
+
+          {
+            if [ -n "$TAG_MSG" ]; then
+              echo "### Note di rilascio"
+              echo "$TAG_MSG"
+              echo ""
+            fi
+
+            echo "### Modifiche"
+            if [ -n "$PREV_TAG" ]; then
+              echo "_Modifiche rispetto a \`$PREV_TAG\` :_"
+              echo ""
+              git log --no-merges --pretty=format:"- %s (%h)" "$PREV_TAG..$TAG_NAME"
+            else
+              echo "_Primo rilascio:_"
+              echo ""
+              git log --no-merges --pretty=format:"- %s (%h)" "$TAG_NAME"
+            fi
+            echo ""
+          } > CHANGELOG.md
+
+          cat CHANGELOG.md
+
+      - name: Update manifest version from tag
+        run: |
+          TAG="${{ github.ref_name }}"
+          if [ -z "$TAG" ]; then
+            TAG="${GITHUB_REF#refs/tags/}"
+          fi
+          VERSION="${TAG#v}"
+          python3 -c "import json; p='custom_components/mularr/manifest.json'; d=json.load(open(p)); d['version']='$VERSION'; json.dump(d, open(p, 'w'), indent=2); open(p, 'a').write('\n')"
+          cat custom_components/mularr/manifest.json
+
+      - name: Zip custom_components
+        run: |
+          cd "${{ github.workspace }}"
+          zip -r mularr.zip custom_components/mularr
 
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
           name: Release ${{ github.ref_name }}
-          generate_release_notes: true
+          files: |
+            mularr.zip
+          body_path: CHANGELOG.md
           draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

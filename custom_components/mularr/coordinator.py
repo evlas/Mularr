@@ -22,9 +22,11 @@ class MularrDataUpdateCoordinator(DataUpdateCoordinator[dict[str, Any]]):
         hass: HomeAssistant,
         client: MularrApiClient,
         update_interval: int = DEFAULT_SCAN_INTERVAL,
+        version: str | None = None,
     ) -> None:
         """Initialize the coordinator."""
         self.client = client
+        self.version = version
         super().__init__(
             hass,
             _LOGGER,

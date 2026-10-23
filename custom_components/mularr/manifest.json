@@ -7,5 +7,5 @@
   "integration_type": "hub",
   "iot_class": "local_polling",
   "issue_tracker": "https://github.com/evlas/Mularr/issues",
-  "version": "1.0.0"
+  "version": "0.0.2"
 }

@@ -5,6 +5,7 @@ import logging
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
+from homeassistant.loader import async_get_integration
 
 from .const import (
     DOMAIN,
@@ -47,10 +48,18 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
         session=session,
     )
 
+    integration_version: str | None = None
+    try:
+        integration = await async_get_integration(hass, DOMAIN)
+        integration_version = integration.version
+    except Exception:
+        pass
+
     coordinator = MularrDataUpdateCoordinator(
         hass=hass,
         client=client,
         update_interval=scan_interval,
+        version=integration_version,
     )
 
     await coordinator.async_config_entry_first_refresh()
