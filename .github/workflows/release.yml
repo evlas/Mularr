@@ -69,8 +69,8 @@ jobs:
 
       - name: Zip custom_components
         run: |
-          cd "${{ github.workspace }}"
-          zip -r mularr.zip custom_components/mularr
+          cd "${{ github.workspace }}/custom_components/mularr"
+          zip -r "${{ github.workspace }}/mularr.zip" .
 
       - name: Create Release
         uses: softprops/action-gh-release@v2
