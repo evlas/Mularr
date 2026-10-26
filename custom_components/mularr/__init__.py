@@ -29,10 +29,10 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Set up Mularr from a config entry."""
     hass.data.setdefault(DOMAIN, {})
 
-    host = entry.data[CONF_HOST]
-    port = entry.data.get(CONF_PORT, DEFAULT_PORT)
-    api_key = entry.data.get(CONF_API_KEY)
-    use_ssl = entry.data.get(CONF_SSL, DEFAULT_SSL)
+    host = entry.options.get(CONF_HOST, entry.data.get(CONF_HOST))
+    port = entry.options.get(CONF_PORT, entry.data.get(CONF_PORT, DEFAULT_PORT))
+    api_key = entry.options.get(CONF_API_KEY, entry.data.get(CONF_API_KEY))
+    use_ssl = entry.options.get(CONF_SSL, entry.data.get(CONF_SSL, DEFAULT_SSL))
 
     scan_interval = entry.options.get(
         CONF_SCAN_INTERVAL,
@@ -83,9 +83,4 @@ async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
 
 async def update_listener(hass: HomeAssistant, entry: ConfigEntry) -> None:
     """Handle options update."""
-    coordinator: MularrDataUpdateCoordinator = hass.data[DOMAIN][entry.entry_id]
-    scan_interval = entry.options.get(CONF_SCAN_INTERVAL, DEFAULT_SCAN_INTERVAL)
-    coordinator.update_interval = coordinator.default_interval = coordinator.update_interval.__class__(
-        seconds=scan_interval
-    )
-    await coordinator.async_request_refresh()
+    await hass.config_entries.async_reload(entry.entry_id)

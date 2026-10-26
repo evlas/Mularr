@@ -25,11 +25,20 @@
     "step": {
       "init": {
         "title": "Opzioni Mularr",
-        "description": "Modifica l'intervallo di aggiornamento dei dati.",
+        "description": "Modifica i parametri di connessione e l'intervallo di aggiornamento.",
         "data": {
+          "host": "Host o Indirizzo IP",
+          "port": "Porta",
+          "api_key": "API Key",
+          "ssl": "Usa SSL",
           "scan_interval": "Intervallo di polling (secondi)"
         }
       }
+    },
+    "error": {
+      "cannot_connect": "Impossibile connettersi a Mularr. Verifica indirizzo, porta e rete.",
+      "invalid_auth": "API Key errata o accesso non autorizzato.",
+      "unknown": "Si è verificato un errore imprevisto."
     }
   },
   "entity": {

@@ -25,11 +25,20 @@
     "step": {
       "init": {
         "title": "Mularr Options",
-        "description": "Adjust polling settings for Mularr.",
+        "description": "Adjust connection parameters and update interval.",
         "data": {
+          "host": "Host or IP",
+          "port": "Port",
+          "api_key": "API Key",
+          "ssl": "Use SSL",
           "scan_interval": "Update Interval (seconds)"
         }
       }
+    },
+    "error": {
+      "cannot_connect": "Failed to connect to Mularr. Please check host, port and network.",
+      "invalid_auth": "Invalid API Key or unauthorized access.",
+      "unknown": "Unexpected error occurred."
     }
   },
   "entity": {
