@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="brand/logo.png" alt="Mularr Logo" width="360">
+</p>
+
 # Mularr - Home Assistant Integration 🐴
 
 🌍 **Lingua / Language**: [English](README.md) • **Italiano**

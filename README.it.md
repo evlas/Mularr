@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="custom_components/mularr/brand/logo.png" alt="Mularr Logo" width="360">
+</p>
+
 # Mularr - Home Assistant Integration 🐴
 
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-41BDF5.svg)](https://github.com/hacs/default)
