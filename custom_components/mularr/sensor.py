@@ -3,6 +3,8 @@ from __future__ import annotations
 
 from collections.abc import Callable
 from dataclasses import dataclass
+import socket
+import struct
 from typing import Any
 
 from homeassistant.components.sensor import (
@@ -30,6 +32,52 @@ class MularrSensorEntityDescription(SensorEntityDescription):
 
     value_fn: Callable[[dict[str, Any]], Any] | None = None
     attrs_fn: Callable[[dict[str, Any]], dict[str, Any]] | None = None
+
+
+def _extract_public_ip(data: dict[str, Any]) -> str | None:
+    """Estrae l'IP pubblico dal sistema o dal HighID aMule come fallback."""
+    sys_ip = data.get("system", {}).get("publicIp")
+    if sys_ip and isinstance(sys_ip, str) and sys_ip.strip():
+        return sys_ip.strip()
+
+    vpn_ip = (
+        data.get("system", {}).get("vpn", {}).get("public_ip")
+        or data.get("system", {}).get("vpn", {}).get("ip")
+    )
+    if vpn_ip and isinstance(vpn_ip, str) and vpn_ip.strip():
+        return vpn_ip.strip()
+
+    # Fallback: sotto VPN (es. Azire), i servizi come ipify/ipinfo possono essere
+    # bloccati o in rate-limit. In aMule con HighID, l'ed2kId è matematicamente l'IP pubblico.
+    status = data.get("status", {})
+    if status.get("isHighID"):
+        high_id = status.get("ed2kId") or status.get("id")
+        if isinstance(high_id, int) and high_id > 16777216:
+            try:
+                return socket.inet_ntoa(struct.pack("<I", high_id))
+            except Exception:
+                pass
+
+    return None
+
+
+def _extract_ip_attrs(data: dict[str, Any]) -> dict[str, Any]:
+    """Estrae gli attributi dell'IP pubblico o l'origine della rilevazione."""
+    attrs: dict[str, Any] = {}
+    ip_details = data.get("system", {}).get("ipDetails")
+    if isinstance(ip_details, dict):
+        attrs.update(ip_details)
+
+    status = data.get("status", {})
+    if status.get("isHighID"):
+        high_id = status.get("ed2kId") or status.get("id")
+        if isinstance(high_id, int) and high_id > 16777216:
+            attrs["amule_high_id"] = high_id
+            attrs["detection_source"] = (
+                "system_lookup" if data.get("system", {}).get("publicIp") else "amule_high_id"
+            )
+
+    return attrs
 
 
 SENSOR_TYPES: tuple[MularrSensorEntityDescription, ...] = (
@@ -155,12 +203,8 @@ SENSOR_TYPES: tuple[MularrSensorEntityDescription, ...] = (
         translation_key="public_ip",
         name="Public IP",
         icon="mdi:ip",
-        value_fn=lambda data: data.get("system", {}).get("publicIp"),
-        attrs_fn=lambda data: (
-            data.get("system", {}).get("ipDetails")
-            if isinstance(data.get("system", {}).get("ipDetails"), dict)
-            else {}
-        ),
+        value_fn=_extract_public_ip,
+        attrs_fn=_extract_ip_attrs,
     ),
 )
 
