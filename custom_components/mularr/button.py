@@ -26,21 +26,18 @@ BUTTON_TYPES: tuple[MularrButtonEntityDescription, ...] = (
     MularrButtonEntityDescription(
         key="restart_daemon",
         translation_key="restart_daemon",
-        name="Restart Daemon",
         icon="mdi:restart",
         press_action=lambda coord: coord.client.restart_daemon(),
     ),
     MularrButtonEntityDescription(
         key="clear_completed",
         translation_key="clear_completed",
-        name="Clear Completed Transfers",
         icon="mdi:broom",
         press_action=lambda coord: coord.client.clear_completed(),
     ),
     MularrButtonEntityDescription(
         key="connect_server",
         translation_key="connect_server",
-        name="Connect to Server",
         icon="mdi:server-network",
         press_action=lambda coord: coord.client.connect_server(),
     ),

@@ -28,7 +28,6 @@ async def async_setup_entry(
             SwitchEntityDescription(
                 key="server_connection",
                 translation_key="server_connection",
-                name="ED2K Server Connection",
                 icon="mdi:server-network",
             ),
         )

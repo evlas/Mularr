@@ -6,6 +6,7 @@ import logging
 from typing import Any
 
 from homeassistant.core import HomeAssistant
+from homeassistant.exceptions import ConfigEntryAuthFailed
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
 
 from .const import DOMAIN, DEFAULT_SCAN_INTERVAL
@@ -39,6 +40,6 @@ class MularrDataUpdateCoordinator(DataUpdateCoordinator[dict[str, Any]]):
         try:
             return await self.client.get_all_data()
         except MularrAuthError as err:
-            raise UpdateFailed(f"Authentication failed: {err}") from err
+            raise ConfigEntryAuthFailed(f"Authentication failed: {err}") from err
         except (MularrConnectionError, MularrApiError) as err:
             raise UpdateFailed(f"Error communicating with Mularr API: {err}") from err

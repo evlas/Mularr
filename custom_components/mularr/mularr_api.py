@@ -81,6 +81,7 @@ class MularrApiClient:
                 url,
                 headers=headers,
                 json=json_data,
+                ssl=self.verify_ssl if self.use_ssl else None,
             ) as response:
                 if response.status in (401, 403):
                     text = await response.text()
@@ -136,6 +137,10 @@ class MularrApiClient:
             self.get_transfers(),
             return_exceptions=True,
         )
+
+        for res in (status, speed, system, transfers):
+            if isinstance(res, MularrAuthError):
+                raise res
 
         result: dict[str, Any] = {}
         if isinstance(status, dict):

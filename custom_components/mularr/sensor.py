@@ -84,7 +84,6 @@ SENSOR_TYPES: tuple[MularrSensorEntityDescription, ...] = (
     MularrSensorEntityDescription(
         key="download_speed",
         translation_key="download_speed",
-        name="Download Speed",
         device_class=SensorDeviceClass.DATA_RATE,
         native_unit_of_measurement=UnitOfDataRate.BYTES_PER_SECOND,
         state_class=SensorStateClass.MEASUREMENT,
@@ -93,7 +92,6 @@ SENSOR_TYPES: tuple[MularrSensorEntityDescription, ...] = (
     MularrSensorEntityDescription(
         key="upload_speed",
         translation_key="upload_speed",
-        name="Upload Speed",
         device_class=SensorDeviceClass.DATA_RATE,
         native_unit_of_measurement=UnitOfDataRate.BYTES_PER_SECOND,
         state_class=SensorStateClass.MEASUREMENT,
@@ -102,14 +100,12 @@ SENSOR_TYPES: tuple[MularrSensorEntityDescription, ...] = (
     MularrSensorEntityDescription(
         key="id_status",
         translation_key="id_status",
-        name="ID Status",
         icon="mdi:network",
         value_fn=lambda data: "HighID" if data.get("status", {}).get("isHighID") else "LowID",
     ),
     MularrSensorEntityDescription(
         key="kad_status",
         translation_key="kad_status",
-        name="KAD Status",
         icon="mdi:network",
         value_fn=lambda data: (
             "Firewalled"
@@ -120,7 +116,6 @@ SENSOR_TYPES: tuple[MularrSensorEntityDescription, ...] = (
     MularrSensorEntityDescription(
         key="connected_server",
         translation_key="connected_server",
-        name="Connected Server",
         icon="mdi:server-network",
         value_fn=lambda data: (
             data.get("status", {}).get("connectedServer", {}).get("name")
@@ -134,7 +129,6 @@ SENSOR_TYPES: tuple[MularrSensorEntityDescription, ...] = (
     MularrSensorEntityDescription(
         key="active_downloads",
         translation_key="active_downloads",
-        name="Active Downloads",
         icon="mdi:download-multiple",
         state_class=SensorStateClass.MEASUREMENT,
         value_fn=lambda data: (
@@ -146,7 +140,6 @@ SENSOR_TYPES: tuple[MularrSensorEntityDescription, ...] = (
     MularrSensorEntityDescription(
         key="shared_files",
         translation_key="shared_files",
-        name="Shared Files",
         icon="mdi:folder-upload",
         state_class=SensorStateClass.MEASUREMENT,
         value_fn=lambda data: data.get("status", {}).get("sharedFileCount", 0),
@@ -154,7 +147,6 @@ SENSOR_TYPES: tuple[MularrSensorEntityDescription, ...] = (
     MularrSensorEntityDescription(
         key="total_sources",
         translation_key="total_sources",
-        name="Total Sources",
         icon="mdi:account-group",
         state_class=SensorStateClass.MEASUREMENT,
         value_fn=lambda data: data.get("status", {}).get("totalSourceCount", 0),
@@ -162,7 +154,6 @@ SENSOR_TYPES: tuple[MularrSensorEntityDescription, ...] = (
     MularrSensorEntityDescription(
         key="upload_queue",
         translation_key="upload_queue",
-        name="Upload Queue",
         icon="mdi:account-multiple",
         state_class=SensorStateClass.MEASUREMENT,
         value_fn=lambda data: data.get("status", {}).get("uploadQueueLength", 0),
@@ -170,7 +161,6 @@ SENSOR_TYPES: tuple[MularrSensorEntityDescription, ...] = (
     MularrSensorEntityDescription(
         key="total_downloaded",
         translation_key="total_downloaded",
-        name="Total Downloaded",
         device_class=SensorDeviceClass.DATA_SIZE,
         native_unit_of_measurement=UnitOfInformation.BYTES,
         state_class=SensorStateClass.TOTAL_INCREASING,
@@ -179,7 +169,6 @@ SENSOR_TYPES: tuple[MularrSensorEntityDescription, ...] = (
     MularrSensorEntityDescription(
         key="total_uploaded",
         translation_key="total_uploaded",
-        name="Total Uploaded",
         device_class=SensorDeviceClass.DATA_SIZE,
         native_unit_of_measurement=UnitOfInformation.BYTES,
         state_class=SensorStateClass.TOTAL_INCREASING,
@@ -188,7 +177,6 @@ SENSOR_TYPES: tuple[MularrSensorEntityDescription, ...] = (
     MularrSensorEntityDescription(
         key="free_disk_space",
         translation_key="free_disk_space",
-        name="Free Disk Space",
         icon="mdi:harddisk",
         device_class=SensorDeviceClass.DATA_SIZE,
         native_unit_of_measurement=UnitOfInformation.BYTES,
@@ -201,7 +189,6 @@ SENSOR_TYPES: tuple[MularrSensorEntityDescription, ...] = (
     MularrSensorEntityDescription(
         key="public_ip",
         translation_key="public_ip",
-        name="Public IP",
         icon="mdi:ip",
         value_fn=_extract_public_ip,
         attrs_fn=_extract_ip_attrs,

@@ -31,7 +31,6 @@ BINARY_SENSOR_TYPES: tuple[MularrBinarySensorEntityDescription, ...] = (
     MularrBinarySensorEntityDescription(
         key="ed2k_connected",
         translation_key="ed2k_connected",
-        name="ED2K Connected",
         device_class=BinarySensorDeviceClass.CONNECTIVITY,
         is_on_fn=lambda data: bool(
             data.get("status", {}).get("connectionState", {}).get("ed2kConnected")
@@ -40,7 +39,6 @@ BINARY_SENSOR_TYPES: tuple[MularrBinarySensorEntityDescription, ...] = (
     MularrBinarySensorEntityDescription(
         key="kad_connected",
         translation_key="kad_connected",
-        name="KAD Connected",
         device_class=BinarySensorDeviceClass.CONNECTIVITY,
         is_on_fn=lambda data: bool(
             data.get("status", {}).get("connectionState", {}).get("kadConnected")
@@ -49,7 +47,6 @@ BINARY_SENSOR_TYPES: tuple[MularrBinarySensorEntityDescription, ...] = (
     MularrBinarySensorEntityDescription(
         key="vpn_status",
         translation_key="vpn_status",
-        name="VPN Active",
         device_class=BinarySensorDeviceClass.CONNECTIVITY,
         is_on_fn=lambda data: bool(
             data.get("system", {}).get("vpn", {}).get("enabled")
