@@ -1,7 +1,10 @@
 {
   "domain": "mularr",
   "name": "Mularr",
-  "codeowners": ["@evlas", "@joecarl"],
+  "codeowners": [
+    "@evlas",
+    "@joecarl"
+  ],
   "config_flow": true,
   "documentation": "https://github.com/evlas/Mularr",
   "integration_type": "hub",
