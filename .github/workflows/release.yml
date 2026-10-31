@@ -46,11 +46,11 @@ jobs:
             if [ -n "$PREV_TAG" ]; then
               echo "_Modifiche rispetto a \`$PREV_TAG\` :_"
               echo ""
-              git log --no-merges --pretty=format:"- %s (%h)" "$PREV_TAG..$TAG_NAME"
+              git log --no-merges --grep="^chore(release):" --invert-grep --pretty=format:"- %s (%h)" "$PREV_TAG..$TAG_NAME"
             else
               echo "_Primo rilascio:_"
               echo ""
-              git log --no-merges --pretty=format:"- %s (%h)" "$TAG_NAME"
+              git log --no-merges --grep="^chore(release):" --invert-grep --pretty=format:"- %s (%h)" "$TAG_NAME"
             fi
             echo ""
           } > CHANGELOG.md
@@ -64,17 +64,36 @@ jobs:
             TAG="${GITHUB_REF#refs/tags/}"
           fi
           VERSION="${TAG#v}"
-          python3 -c "import json; p='custom_components/mularr/manifest.json'; d=json.load(open(p)); d['version']='$VERSION'; json.dump(d, open(p, 'w'), indent=2); open(p, 'a').write('\n')"
+          MANIFEST="custom_components/mularr/manifest.json"
+          python3 -c "import json; p='$MANIFEST'; d=json.load(open(p)); d['version']='$VERSION'; sorted_d={'domain': d['domain'], 'name': d['name'], **{k: d[k] for k in sorted(d.keys()) if k not in ('domain', 'name')}}; json.dump(sorted_d, open(p, 'w'), indent=2, ensure_ascii=False); open(p, 'a').write('\n')"
+          if ! git diff --quiet "$MANIFEST"; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            TAG_MSG=$(git tag -l --format='%(contents)' "$TAG" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
+            git add "$MANIFEST"
+            git commit -m "chore(release): bump manifest version to $VERSION [skip ci]"
+            DEFAULT_BRANCH=$(git remote show origin | sed -n '/HEAD branch/s/.*: //p')
+            if [ -n "$DEFAULT_BRANCH" ]; then
+              git push origin "HEAD:refs/heads/$DEFAULT_BRANCH" || true
+            fi
+            if [ -n "$TAG_MSG" ]; then
+              git tag -fa "$TAG" -m "$TAG_MSG"
+            else
+              git tag -f "$TAG"
+            fi
+            git push origin "refs/tags/$TAG" --force
+          fi
           cat custom_components/mularr/manifest.json
 
       - name: Zip custom_components
         run: |
           cd "${{ github.workspace }}/custom_components/mularr"
-          zip -r "${{ github.workspace }}/mularr.zip" .
+          zip -r "${{ github.workspace }}/mularr.zip" . -x "*__pycache__*"
 
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
+          tag_name: ${{ github.ref_name }}
           name: Release ${{ github.ref_name }}
           files: |
             mularr.zip
